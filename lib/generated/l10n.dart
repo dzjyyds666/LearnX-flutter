@@ -64,6 +64,46 @@ class S {
   String get signin {
     return Intl.message('SignIn', name: 'signin', desc: '', args: []);
   }
+
+  /// `Please enter your email`
+  String get enteremail {
+    return Intl.message(
+      'Please enter your email',
+      name: 'enteremail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your password`
+  String get enterpassword {
+    return Intl.message(
+      'Please enter your password',
+      name: 'enterpassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `enter verification code`
+  String get enterverifycode {
+    return Intl.message(
+      'enter verification code',
+      name: 'enterverifycode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send VerifyCode`
+  String get buttonVerify {
+    return Intl.message(
+      'Send VerifyCode',
+      name: 'buttonVerify',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

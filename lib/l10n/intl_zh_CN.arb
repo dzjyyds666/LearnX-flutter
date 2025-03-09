@@ -1,5 +1,9 @@
 {
   "@@locale": "zh_CN",
-  "signup": "登录",
-  "signin": "注册"
+  "signup": "注册",
+  "signin": "登录",
+  "enteremail": "请输入您的电子邮件",
+  "enterpassword": "请输入您的密码",
+  "enterverifycode": "输入验证码",
+  "buttonVerify": "发送验证码"
 }

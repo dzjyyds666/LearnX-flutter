@@ -1,5 +1,9 @@
 {
   "@@locale": "en",
   "signup": "SignUp",
-  "signin": "SignIn"
+  "signin": "SignIn",
+  "enteremail": "Please enter your email",
+  "enterpassword": "Please enter your password",
+  "enterverifycode": "enter verification code",
+  "buttonVerify": "Send VerifyCode"
 }

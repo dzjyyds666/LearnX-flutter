@@ -1,6 +1,6 @@
+import 'package:LearnX/utils/prefs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/utils/prefs.dart';
 
 import 'package:toastification/toastification.dart';
 
@@ -16,19 +16,13 @@ class Utils {
     // toast的详细使用参考pub.dev
     // https://pub.dev/packages/toastification
     toastification.show(
-        title: Text(
-          msg,
-          style: TextStyle(color: Colors.black),
-        ),
-        style: ToastificationStyle.flat,
-        autoCloseDuration: Duration(seconds: 2),
-        backgroundColor: bgColor.withOpacity(0.2),
-        borderSide: BorderSide(color: bgColor),
-        icon: Icon(
-          icon,
-          color: Colors.black,
-          size: 20,
-        ),
-        showProgressBar: false);
+      title: Text(msg, style: TextStyle(color: Colors.black)),
+      style: ToastificationStyle.flat,
+      autoCloseDuration: Duration(seconds: 2),
+      backgroundColor: bgColor.withOpacity(0.2),
+      borderSide: BorderSide(color: bgColor),
+      icon: Icon(icon, color: Colors.black, size: 20),
+      showProgressBar: false,
+    );
   }
 }

@@ -1,4 +1,4 @@
-name: frontend
+name: LearnX
 description: "A new Flutter project."
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -15,7 +15,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
-  shared_preferences: ^2.5.2
+  shared_preferences: ^2.3.2
   responsive_builder: ^0.7.1
   toastification: ^3.0.1
   flutter_svg: ^2.0.17

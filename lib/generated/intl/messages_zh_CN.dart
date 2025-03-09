@@ -22,7 +22,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "signin": MessageLookupByLibrary.simpleMessage("注册"),
-    "signup": MessageLookupByLibrary.simpleMessage("登录"),
+    "buttonVerify": MessageLookupByLibrary.simpleMessage("发送验证码"),
+    "enteremail": MessageLookupByLibrary.simpleMessage("请输入您的电子邮件"),
+    "enterpassword": MessageLookupByLibrary.simpleMessage("请输入您的密码"),
+    "enterverifycode": MessageLookupByLibrary.simpleMessage("输入验证码"),
+    "signin": MessageLookupByLibrary.simpleMessage("登录"),
+    "signup": MessageLookupByLibrary.simpleMessage("注册"),
   };
 }
