@@ -15,6 +15,9 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   bool isSignin = true;
 
+  String username = '';
+  String password = '';
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -27,76 +30,95 @@ class _LoginState extends State<Login> {
             end: Alignment.bottomCenter,
           ),
         ),
-        child: Center(
-          child: Container(
-            width: 375,
-            height: 400,
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: colorPool.backgroundColor1,
-              borderRadius: BorderRadius.circular(20),
+        child: Stack(
+          children: [
+            Positioned(
+              top: 100,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: Text(
+                  'LearnX',
+                  style: TextStyle(
+                    color: colorPool.textlightColor,
+                    fontSize: 40,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
+            Center(
+              child: Container(
+                width: 375,
+                height: 400,
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: colorPool.backgroundColor1,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    TextButton(
-                      onPressed: () {
-                        debugPrint(S.of(context).signin);
-                        // 切换到登录
-                        setState(() {
-                          isSignin = true;
-                        });
-                      },
-                      child: Text(
-                        S.of(context).signin,
-                        style: TextStyle(
-                          color:
-                              isSignin
-                                  ? colorPool.secondaryColor1
-                                  : colorPool.textPrimaryColor,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            debugPrint(S.of(context).signin);
+                            // 切换到登录
+                            setState(() {
+                              isSignin = true;
+                            });
+                          },
+                          child: Text(
+                            S.of(context).signin,
+                            style: TextStyle(
+                              color:
+                                  isSignin
+                                      ? colorPool.secondaryColor1
+                                      : colorPool.textPrimaryColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    Container(
-                      width: 1,
-                      height: 30,
-                      color: colorPool.borderColor1,
-                      margin: EdgeInsets.only(left: 10, right: 10),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        debugPrint(S.of(context).signup);
-                        // 切换到注册
-                        setState(() {
-                          isSignin = false;
-                        });
-                      },
-                      child: Text(
-                        S.of(context).signup,
-                        style: TextStyle(
-                          color:
-                              isSignin
-                                  ? colorPool.textPrimaryColor
-                                  : colorPool.secondaryColor1,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                        Container(
+                          width: 1,
+                          height: 30,
+                          color: colorPool.borderColor1,
+                          margin: EdgeInsets.only(left: 10, right: 10),
                         ),
-                      ),
+                        TextButton(
+                          onPressed: () {
+                            debugPrint(S.of(context).signup);
+                            // 切换到注册
+                            setState(() {
+                              isSignin = false;
+                            });
+                          },
+                          child: Text(
+                            S.of(context).signup,
+                            style: TextStyle(
+                              color:
+                                  isSignin
+                                      ? colorPool.textPrimaryColor
+                                      : colorPool.secondaryColor1,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
+                    SizedBox(height: 20),
+                    isSignin ? SignIn() : SignUp(),
                   ],
                 ),
-                SizedBox(height: 20),
-                isSignin ? SignIn() : SignUp(),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
@@ -139,7 +161,7 @@ class _SignInState extends State<SignIn> {
           // 登录按钮
           GestureDetector(
             child: Container(
-              width: 400,
+              width: 350,
               height: 70,
               decoration: BoxDecoration(
                 color: colorPool.primaryColor1,
@@ -172,29 +194,9 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   bool isSendVerifyCode = false;
-  int _start = 60;
-  late Timer _timer;
-
-  void startTimer() {
-    const oneSec = Duration(seconds: 1);
-    _timer = Timer.periodic(oneSec, (Timer timer) {
-      if (_start == 0) {
-        setState(() {
-          timer.cancel();
-          isSendVerifyCode = false;
-          _start = 60;
-        });
-      } else {
-        setState(() {
-          _start--;
-        });
-      }
-    });
-  }
 
   @override
   void dispose() {
-    _timer.cancel();
     super.dispose();
   }
 
@@ -223,75 +225,27 @@ class _SignUpState extends State<SignUp> {
             ),
           ),
           SizedBox(height: 20),
-          TextField(
-            decoration: InputDecoration(
-              hintText: S.of(context).enterverifycode,
-              border: OutlineInputBorder(
+          // 注册按钮
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              width: 350,
+              height: 70,
+              decoration: BoxDecoration(
+                color: colorPool.primaryColor1,
                 borderRadius: BorderRadius.circular(20),
               ),
+              child: Center(
+                child: Text(
+                  S.of(context).signup,
+                  style: TextStyle(
+                    color: colorPool.textlightColor,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ),
-          ),
-          SizedBox(height: 20),
-          // 注册按钮
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  width: 150,
-                  height: 70,
-                  decoration: BoxDecoration(
-                    color: colorPool.primaryColor1,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Center(
-                    child: Text(
-                      S.of(context).signup,
-                      style: TextStyle(
-                        color: colorPool.textlightColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap:
-                    isSendVerifyCode
-                        ? null
-                        : () {
-                          setState(() {
-                            isSendVerifyCode = true;
-                          });
-                          startTimer();
-                        },
-                child: Container(
-                  width: 150,
-                  height: 70,
-                  decoration: BoxDecoration(
-                    color:
-                        isSendVerifyCode
-                            ? colorPool.borderColor1
-                            : colorPool.primaryColor1,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Center(
-                    child: Text(
-                      isSendVerifyCode
-                          ? '$_start s'
-                          : S.of(context).buttonVerify,
-                      style: TextStyle(
-                        color: colorPool.textlightColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
           ),
         ],
       ),
